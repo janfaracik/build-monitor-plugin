@@ -1,12 +1,7 @@
 import { CSSProperties } from "react";
-import TextTransition from "react-text-transition";
 
 function Label({ text, style = {} }: { text: string; style?: CSSProperties }) {
-  return (
-    <TextTransition style={{ position: "relative", ...style }}>
-      {text}
-    </TextTransition>
-  );
+  return <span style={{ position: "relative", ...style }}>{text}</span>;
 }
 
 export default Label;
