@@ -8,6 +8,7 @@ import com.microsoft.playwright.junit.UsePlaywright;
 import com.smartcodeltd.jenkinsci.plugins.buildmonitor.e2e.config.PlaywrightConfig;
 import com.smartcodeltd.jenkinsci.plugins.buildmonitor.e2e.pages.BuildMonitorViewPage;
 import hudson.model.Result;
+import hudson.plugins.descriptionsetter.DescriptionSetterBuilder;
 import hudson.tasks.Shell;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,17 +25,14 @@ class ShouldDescribeEachProjectTest {
     void test(Page p, JenkinsRule j) {
         createFreeStyleProject(j, "Example Github Project")
                 .addTask(new Shell(outputsGithubProjectLog()))
-                //                    .addTask(new SetBuildDescriptionCommand(""))
-                //            SetBuildDescription.to("Revision: \\1")
-                //                                                    .basedOnLogLineMatching("Checking out Revision
-                // ([\\w]{6})")),
+                .addTask(new DescriptionSetterBuilder("Checking out Revision ([\\w]{6})", "Revision: \\1", false))
                 .run(Result.SUCCESS);
         var view = createBuildMonitorView(j, "Build Monitor").displayAllProjects();
 
         BuildMonitorViewPage.from(p, view)
                 .goTo()
                 .getJob("Example Github Project")
-                .hasIdentifiedProblem("Revision: 67f4b3");
+                .hasDescription("Revision: 67f4b3");
     }
 
     private String outputsGithubProjectLog() {
