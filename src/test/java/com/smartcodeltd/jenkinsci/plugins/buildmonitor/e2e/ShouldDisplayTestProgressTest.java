@@ -30,7 +30,9 @@ class ShouldDisplayTestProgressTest {
 
         job.run();
 
-        BuildMonitorViewPage.from(p, view).goTo().getJob(job.get().getDisplayName())
-                        .hasTestProgressBars();
+        BuildMonitorViewPage.from(p, view)
+                .goTo()
+                .getJob(job.get().getDisplayName())
+                .hasTestProgressBars();
     }
 }
