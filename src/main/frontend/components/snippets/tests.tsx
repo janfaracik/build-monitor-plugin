@@ -15,8 +15,8 @@ export default function Tests({ job }: { job: Job }) {
         return (
           <div
             className={
-              "bs-progress " +
-              (realtimeTest.style === "red" ? "bs-progress--red" : "")
+              "bm-progress " +
+              (realtimeTest.style === "red" ? "bm-progress--red" : "")
             }
             title={title}
             key={index}

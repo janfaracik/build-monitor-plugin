@@ -21,13 +21,16 @@ class ShouldDisplayTestProgressTest {
         job.run();
         var view = createBuildMonitorView(j, "Build Monitor").addJobs(job.get());
 
-        BuildMonitorViewPage.from(p, view).goTo().getJob(job.get().getDisplayName());
-        //                .hasTestProgressBars();
-
         try {
-            Thread.sleep(10000000);
+            // Hack to limit concurrent builds of this job
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
+        job.run();
+
+        BuildMonitorViewPage.from(p, view).goTo().getJob(job.get().getDisplayName())
+                        .hasTestProgressBars();
     }
 }

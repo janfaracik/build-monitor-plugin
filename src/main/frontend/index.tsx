@@ -9,7 +9,7 @@ import { JobsProvider } from "./context/jobs-provider.tsx";
 import { UserPreferencesProvider } from "./context/user-preference-provider.tsx";
 
 const rootElement = document.getElementById("app");
-if (!rootElement) throw new Error("Failed to find the 'graph' element");
+if (!rootElement) throw new Error("Failed to find the 'app' element");
 
 const root = createRoot(rootElement);
 

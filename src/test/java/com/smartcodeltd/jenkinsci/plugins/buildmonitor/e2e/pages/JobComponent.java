@@ -50,7 +50,7 @@ public class JobComponent {
     }
 
     public JobComponent hasTestProgressBars() {
-        Locator badge = component.locator(".bs-progress");
+        Locator badge = component.locator(".bm-progress");
         assertThat(badge).isVisible();
         return this;
     }
