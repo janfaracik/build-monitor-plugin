@@ -41,6 +41,10 @@ function Cell({ job }: { job: Job }) {
 
       {job.headline && !job.claim?.active && <Label text={job.headline} />}
 
+      {job.lastCompletedBuild.description && (
+        <Label text={job.lastCompletedBuild.description} />
+      )}
+
       <Claim job={job} />
       <Problems job={job} />
       <Tests job={job} />

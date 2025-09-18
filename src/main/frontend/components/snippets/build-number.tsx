@@ -19,7 +19,12 @@ export default function BuildNumber({ job }: { job: Job }) {
                 <Label text={build.name} />
               </a>
             )}
-            {build.pipelineStages && <>{"•"}<Label text={build.pipelineStages} /></>}
+            {build.pipelineStages && (
+              <>
+                {"•"}
+                <Label text={build.pipelineStages} />
+              </>
+            )}
           </div>
         ))}
 

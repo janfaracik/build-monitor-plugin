@@ -38,8 +38,8 @@ public class JobComponent {
     }
 
     public JobComponent hasDescription(String badgeName) {
-        Locator badge = component.locator(".bm-badge").getByText(badgeName);
-        assertThat(badge).isVisible();
+        Locator description = component.getByText(badgeName);
+        assertThat(description).isVisible();
         return this;
     }
 
