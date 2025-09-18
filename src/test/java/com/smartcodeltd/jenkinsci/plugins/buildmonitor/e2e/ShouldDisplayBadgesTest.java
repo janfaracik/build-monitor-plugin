@@ -16,8 +16,6 @@ import org.jvnet.hudson.test.junit.jupiter.WithJenkins;
 @UsePlaywright(PlaywrightConfig.class)
 class ShouldDisplayBadgesTest {
 
-    // TODO - add tests for showing/hiding badges
-
     @Test
     void test(Page p, JenkinsRule j) {
         var run = createPipelineJob(j, "Example job", "singleStagePipeline.jenkinsfile")

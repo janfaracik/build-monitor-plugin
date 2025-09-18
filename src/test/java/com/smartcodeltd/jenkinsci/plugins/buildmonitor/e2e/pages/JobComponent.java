@@ -60,4 +60,9 @@ public class JobComponent {
         assertThat(badge).isVisible();
         return this;
     }
+
+    public JobComponent hasStage(String stage) {
+        assertThat(component).hasText(stage);
+        return this;
+    }
 }
