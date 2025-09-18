@@ -10,23 +10,21 @@ export default function BuildNumber({ job }: { job: Job }) {
     <div>
       {hasCurrentBuilds &&
         job.currentBuilds?.map((build, index) => (
-          <div key={index}>
+          <div className="bm-build-time" key={index}>
             {build.name && (
               <a
-                className="build-name"
                 title={`Details of ${job.name}, build ${build.name}`}
                 href={build.url}
               >
                 <Label text={build.name} />
               </a>
             )}
-            {build.pipelineStages && <Label text={build.pipelineStages} />}
+            {build.pipelineStages && <>{"•"}<Label text={build.pipelineStages} /></>}
           </div>
         ))}
 
       {hasLastCompletedBuild && job.lastCompletedBuild?.name && (
         <a
-          className="build-name"
           title={`Details of ${job.name}, build ${job.lastCompletedBuild.name}`}
           href={job.lastCompletedBuild.url}
         >

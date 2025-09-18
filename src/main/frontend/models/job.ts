@@ -20,10 +20,10 @@ export interface Job {
   currentBuilds: {
     name: string;
     url: string;
-    result: any; // todo
+    result: any;
     isRunning: boolean;
-    elapsedTime: string; // todo
-    timeElapsedSince: string; // todo
+    elapsedTime: string;
+    timeElapsedSince: string;
     duration: string;
     estimatedDuration: string;
     progress: number;
@@ -31,7 +31,7 @@ export interface Job {
     isPipeline: boolean;
     pipelineStages: string;
     hasPreviousBuild: boolean;
-    previousBuild: any; // todo
+    previousBuild: any;
     culprits: string[];
     committers: string[];
   }[];
