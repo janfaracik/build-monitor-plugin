@@ -219,7 +219,8 @@ public class JobViewTest {
         view = a(jobView().of(a(job().thatIsNotBuildable().whereTheLast(build().finishedWith(Result.FAILURE)))));
 
         assertThat(view.status(), containsString("disabled"));
-        assertThat(view.status(), containsString("failing"));
+        // TODO - if its necessary to show past statuses, restore this
+        //        assertThat(view.status(), containsString("failing"));
     }
 
     @Test
@@ -235,12 +236,9 @@ public class JobViewTest {
                         .of(a(job().whereTheLast(build().isStillUpdatingTheLog())
                                 .andThePrevious(build().finishedWith(Result.SUCCESS))))));
 
-        // I could do this instead of having two assertions:
-        // assertThat(view.status(), both(containsString("successful")).and(containsString("running")));
-        // but then it would require Java 7
-
         for (JobView jobView : views) {
-            assertThat(jobView.status(), containsString("successful"));
+            // TODO - if its necessary to show past statuses, restore this
+//            assertThat(jobView.status(), containsString("successful"));
             assertThat(jobView.status(), containsString("running"));
         }
     }
@@ -259,7 +257,8 @@ public class JobViewTest {
                                 .andThePrevious(build().finishedWith(Result.FAILURE))))));
 
         for (JobView jobView : views) {
-            assertThat(jobView.status(), containsString("failing"));
+            // TODO - if its necessary to show past statuses, restore this
+            // assertThat(jobView.status(), containsString("failing"));
             assertThat(jobView.status(), containsString("running"));
         }
     }
@@ -276,19 +275,21 @@ public class JobViewTest {
                         .andThePrevious(build().isStillBuilding())
                         .andThePrevious(build().finishedWith(Result.SUCCESS)))));
 
-        assertThat(view.status(), containsString("successful"));
+        // TODO - if its necessary to show past statuses, restore this
+        assertThat(view.status(), containsString("running"));
     }
 
-    @Test
-    public void
-            should_describe_the_job_as_failing_when_there_are_several_builds_running_in_parallel_and_the_last_completed_failed() {
-        view = a(jobView()
-                .of(a(job().whereTheLast(build().isStillBuilding())
-                        .andThePrevious(build().isStillBuilding())
-                        .andThePrevious(build().finishedWith(Result.FAILURE)))));
-
-        assertThat(view.status(), containsString("failing"));
-    }
+    // TODO - if its necessary to show past statuses, restore this
+//    @Test
+//    public void
+//            should_describe_the_job_as_failing_when_there_are_several_builds_running_in_parallel_and_the_last_completed_failed() {
+//        view = a(jobView()
+//                .of(a(job().whereTheLast(build().isStillBuilding())
+//                        .andThePrevious(build().isStillBuilding())
+//                        .andThePrevious(build().finishedWith(Result.FAILURE)))));
+//
+//        assertThat(view.status(), containsString("failing"));
+//    }
 
     @Test
     public void public_api_should_return_reasonable_defaults_for_jobs_that_never_run() {
