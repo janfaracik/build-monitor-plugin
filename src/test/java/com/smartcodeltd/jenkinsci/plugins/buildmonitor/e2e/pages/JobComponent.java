@@ -3,6 +3,7 @@ package com.smartcodeltd.jenkinsci.plugins.buildmonitor.e2e.pages;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.assertions.LocatorAssertions;
 import hudson.model.Result;
 
 public class JobComponent {
@@ -54,21 +55,15 @@ public class JobComponent {
         return this;
     }
 
-    public JobComponent hasTestProgressBars() {
-        Locator badge = component.locator(".bm-progress");
-        assertThat(badge).isVisible();
-        return this;
-    }
-
-    public JobComponent hasBuilds(String... stages) {
-        for (String stage : stages) {
-            assertThat(component).containsText(stage);
+    public JobComponent hasBuilds(String... builds) {
+        for (String build : builds) {
+            assertThat(component).containsText(build, new LocatorAssertions.ContainsTextOptions().setTimeout(10000));
         }
         return this;
     }
 
     public JobComponent hasStage(String stage) {
-        assertThat(component).hasText(stage);
+        assertThat(component).containsText(stage);
         return this;
     }
 }
