@@ -43,9 +43,8 @@ public class JobComponent {
         return this;
     }
 
-    public JobComponent hasIdentifiedProblem(String badgeName) {
-        Locator badge = component.locator(".bm-badge").getByText(badgeName);
-        assertThat(badge).isVisible();
+    public JobComponent hasIdentifiedProblem(String identifiedProblem) {
+        assertThat(component).containsText(identifiedProblem);
         return this;
     }
 
@@ -58,6 +57,13 @@ public class JobComponent {
     public JobComponent hasTestProgressBars() {
         Locator badge = component.locator(".bm-progress");
         assertThat(badge).isVisible();
+        return this;
+    }
+
+    public JobComponent hasBuilds(String... stages) {
+        for (String stage : stages) {
+            assertThat(component).containsText(stage);
+        }
         return this;
     }
 

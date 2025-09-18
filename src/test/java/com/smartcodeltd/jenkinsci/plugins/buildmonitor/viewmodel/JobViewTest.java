@@ -238,7 +238,7 @@ public class JobViewTest {
 
         for (JobView jobView : views) {
             // TODO - if its necessary to show past statuses, restore this
-//            assertThat(jobView.status(), containsString("successful"));
+            //            assertThat(jobView.status(), containsString("successful"));
             assertThat(jobView.status(), containsString("running"));
         }
     }
@@ -280,16 +280,17 @@ public class JobViewTest {
     }
 
     // TODO - if its necessary to show past statuses, restore this
-//    @Test
-//    public void
-//            should_describe_the_job_as_failing_when_there_are_several_builds_running_in_parallel_and_the_last_completed_failed() {
-//        view = a(jobView()
-//                .of(a(job().whereTheLast(build().isStillBuilding())
-//                        .andThePrevious(build().isStillBuilding())
-//                        .andThePrevious(build().finishedWith(Result.FAILURE)))));
-//
-//        assertThat(view.status(), containsString("failing"));
-//    }
+    //    @Test
+    //    public void
+    //
+    // should_describe_the_job_as_failing_when_there_are_several_builds_running_in_parallel_and_the_last_completed_failed() {
+    //        view = a(jobView()
+    //                .of(a(job().whereTheLast(build().isStillBuilding())
+    //                        .andThePrevious(build().isStillBuilding())
+    //                        .andThePrevious(build().finishedWith(Result.FAILURE)))));
+    //
+    //        assertThat(view.status(), containsString("failing"));
+    //    }
 
     @Test
     public void public_api_should_return_reasonable_defaults_for_jobs_that_never_run() {

@@ -34,12 +34,12 @@ public class FreeStyleProjectUtils {
 
         public FluentFreeStyleProject addTask(Builder builder) {
             builders.add(builder);
+            project.getBuildersList().addAll(builders);
             return this;
         }
 
         public FreeStyleBuild run(Result expectedResult) {
             try {
-                project.getBuildersList().addAll(builders);
                 FreeStyleBuild build = project.scheduleBuild2(0).get();
                 jenkins.assertBuildStatus(expectedResult, build);
                 return build;
@@ -50,10 +50,6 @@ public class FreeStyleProjectUtils {
 
         public FreeStyleProject get() {
             return project;
-        }
-
-        public FluentFreeStyleProject withDescription(String s) {
-            return this;
         }
     }
 }

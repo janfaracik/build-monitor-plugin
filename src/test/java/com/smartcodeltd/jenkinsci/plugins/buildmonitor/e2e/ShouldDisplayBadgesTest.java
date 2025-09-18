@@ -18,9 +18,8 @@ class ShouldDisplayBadgesTest {
 
     @Test
     void test(Page p, JenkinsRule j) {
-        var run = createPipelineJob(j, "Example job", "singleStagePipeline.jenkinsfile")
-                .run(Result.SUCCESS);
-        var view = createBuildMonitorView(j, "Build Monitor").addJobs(run.getParent());
+        createPipelineJob(j, "Example job", "singleStagePipeline.jenkinsfile").run(Result.SUCCESS);
+        var view = createBuildMonitorView(j, "Build Monitor").displayAllProjects();
 
         BuildMonitorViewPage.from(p, view).goTo().getJob("Example job").hasBadge("Example badge");
     }

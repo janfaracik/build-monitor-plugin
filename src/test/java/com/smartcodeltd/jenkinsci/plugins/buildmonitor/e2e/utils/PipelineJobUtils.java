@@ -36,19 +36,20 @@ public class PipelineJobUtils {
             this.job = job;
         }
 
-        public void run() {
+        public FluentPipelineJob run() {
             try {
                 job.scheduleBuild2(0);
+                return this;
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
 
-        public WorkflowRun run(Result expectedResult) {
+        public FluentPipelineJob run(Result expectedResult) {
             try {
                 WorkflowRun build = job.scheduleBuild2(0).get();
                 jenkins.assertBuildStatus(expectedResult, build);
-                return build;
+                return this;
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
