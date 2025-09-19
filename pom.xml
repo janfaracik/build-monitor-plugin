@@ -9,10 +9,10 @@
     <relativePath />
   </parent>
 
-  <artifactId>build-monitor</artifactId>
+  <artifactId>build-monitor-plugin</artifactId>
   <version>${changelist}</version>
   <packaging>hpi</packaging>
-  <name>Build Monitor</name>
+  <name>Build Monitor View</name>
   <url>https://github.com/jenkinsci/build-monitor-plugin</url>
 
   <licenses>
