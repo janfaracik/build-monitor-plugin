@@ -38,64 +38,76 @@ const OutsideButtonWithDropdown = ({ amountOfJobs }: OptionsButtonProps) => {
     <>
       {ready &&
         createPortal(
-          <Dropdown
-            disabled={amountOfJobs === 0}
-            items={[
-              <Slider
-                key={"text-size"}
-                label={"Text size"}
-                min={0.1}
-                max={5}
-                value={textSize}
-                setValue={(e) => setTextSize(Number(e.target.value))}
-                step={0.1}
-              />,
-              <Slider
-                key={"maximum-number-of-columns"}
-                label={"Maximum number of columns"}
-                min={1}
-                max={Math.min(amountOfJobs, 20)}
-                value={Math.min(amountOfJobs, maximumNumberOfColumns)}
-                setValue={(e) =>
-                  setMaximumNumberOfColumns(Number(e.target.value))
-                }
-                step={1}
-              />,
-              "separator",
-              <div key={"show-badges"} className={"bm-checkboxes"}>
-                <Checkbox
-                  label={"Show badges"}
-                  id="settings-show-badges"
-                  value={showBadges}
-                  setValue={(e) => setShowBadges(e)}
-                />
-                <Checkbox
-                  label={"Color blind mode"}
-                  id="settings-color-blind-mode"
-                  value={colorBlindMode}
-                  setValue={(e) => setColorBlindMode(e)}
-                />
-              </div>,
-              "separator",
-              {
-                icon: SETTINGS_SYMBOL,
-                text: "Edit View",
-                href: "configure",
-              },
-              "separator",
-              <button
-                key={"reset"}
-                className={"jenkins-dropdown__item jenkins-!-warning-color"}
-                onClick={reset}
-                disabled={isResettable}
-              >
-                <div className={"jenkins-dropdown__item__icon"}>
-                  {RESET_SYMBOL}
-                </div>
-                Reset to default
-              </button>,
-            ]}
-          />,
+          <>
+            <span className={"bm-credit"}>
+              Brought to you by{" "}
+              <a href="https://bit.ly/JBMAbout" target="_alt">
+                Jan Molak
+              </a>{" "}
+              and{" "}
+              <a href="https://janfaracik.github.io" target="_alt">
+                Jan Faracik
+              </a>
+            </span>
+            <Dropdown
+              disabled={amountOfJobs === 0}
+              items={[
+                <Slider
+                  key={"text-size"}
+                  label={"Text size"}
+                  min={0.1}
+                  max={5}
+                  value={textSize}
+                  setValue={(e) => setTextSize(Number(e.target.value))}
+                  step={0.1}
+                />,
+                <Slider
+                  key={"maximum-number-of-columns"}
+                  label={"Maximum number of columns"}
+                  min={1}
+                  max={Math.min(amountOfJobs, 20)}
+                  value={Math.min(amountOfJobs, maximumNumberOfColumns)}
+                  setValue={(e) =>
+                    setMaximumNumberOfColumns(Number(e.target.value))
+                  }
+                  step={1}
+                />,
+                "separator",
+                <div key={"show-badges"} className={"bm-checkboxes"}>
+                  <Checkbox
+                    label={"Show badges"}
+                    id="settings-show-badges"
+                    value={showBadges}
+                    setValue={(e) => setShowBadges(e)}
+                  />
+                  <Checkbox
+                    label={"Color blind mode"}
+                    id="settings-color-blind-mode"
+                    value={colorBlindMode}
+                    setValue={(e) => setColorBlindMode(e)}
+                  />
+                </div>,
+                "separator",
+                {
+                  icon: SETTINGS_SYMBOL,
+                  text: "Edit View",
+                  href: "configure",
+                },
+                "separator",
+                <button
+                  key={"reset"}
+                  className={"jenkins-dropdown__item jenkins-!-warning-color"}
+                  onClick={reset}
+                  disabled={isResettable}
+                >
+                  <div className={"jenkins-dropdown__item__icon"}>
+                    {RESET_SYMBOL}
+                  </div>
+                  Reset to default
+                </button>,
+              ]}
+            />
+          </>,
           buttonPortal,
         )}
     </>
