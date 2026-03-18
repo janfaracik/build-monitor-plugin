@@ -6,7 +6,7 @@ $cell-padding: 1rem;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 0.75em;
+  gap: 0.5em;
   border: none;
   appearance: none;
   background: none;
@@ -15,7 +15,7 @@ $cell-padding: 1rem;
   border-radius: 1rem;
   font-size: 1.5em;
   font-weight: 450 !important;
-  padding: $cell-padding;
+  padding: $cell-padding $cell-padding 1.5rem $cell-padding;
   z-index: 0;
   transition: var(--standard-transition);
   text-shadow:
